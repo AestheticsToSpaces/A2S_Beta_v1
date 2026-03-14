@@ -192,8 +192,8 @@ load_dotenv(dotenv_path=env_path)
 # ===== Azure SQL Connection Details =====
 SERVER = os.environ.get("SERVER", "a2s-sql-server.database.windows.net")
 DATABASE = os.environ.get("DATABASE", "free-sql-db-6076523")
-USERNAME = os.environ.get("USERNAME", "sqladmin")
-PASSWORD = os.environ.get("PASSWORD", "A2S@2026")
+USERNAME = os.environ.get("USERNAME")
+PASSWORD = os.environ.get("PASSWORD")
 
 def get_connection():
     return pymssql.connect(

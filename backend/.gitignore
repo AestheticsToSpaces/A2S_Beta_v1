@@ -1,0 +1,12 @@
+# Ignore environment and secrets files
+.env
+.env.*
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+# Ignore macOS system files
+.DS_Store
+# Ignore logs
+*.log
+# Ignore Java compiled classes
+backend/target/
