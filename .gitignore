@@ -1,3 +1,4 @@
+backend/target/
 ### AL ###
 #Template for AL projects for Dynamics 365 Business Central
 #launch.json folder
@@ -25,3 +26,25 @@ TestResults.xml
 frontend/.env
 frontend/.env.local
 backend/.env
+# Python cache and system files
+LLM/.DS_Store
+LLM/__pycache__/
+LLM/agent/__pycache__/
+LLM/data/__pycache__/
+LLM/utils/__pycache__/
+*.pyc
+# Node and frontend ignores
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.DS_Store
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/package-lock.json
+frontend/pnpm-lock.yaml
+frontend/.parcel-cache/
+frontend/.next/
+frontend/.turbo/
+frontend/.cache/
