@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A2S: Aesthetics To Spaces</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          },
+          colors: {
+            'a2s-gold': '#D4AF37',
+            'a2s-gold-light': '#E8D5A3',
+            'a2s-charcoal': '#1A1A1A',
+            'a2s-cream': '#F5F5F0',
+            'a2s-glass': 'rgba(255, 255, 255, 0.7)',
+          },
+          borderRadius: {
+            'a2s': '0.75rem',
+            'a2s-lg': '1rem',
+          },
+          boxShadow: {
+            'a2s': '0 4px 24px -4px rgba(26, 26, 26, 0.08)',
+            'a2s-lg': '0 12px 40px -8px rgba(26, 26, 26, 0.12)',
+            'a2s-gold': '0 4px 20px -2px rgba(212, 175, 55, 0.25)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F5F5F0;
+      color: #1A1A1A;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+    }
+
+    .luxury-shadow {
+      box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(212, 175, 55, 0.4);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #D4AF37;
+      cursor: pointer;
+      border: none;
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.jsx"></script>
+</body>
+
+</html>

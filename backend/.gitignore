@@ -1,0 +1,26 @@
+# Ignore environment and secrets files
+.env
+.env.*
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+# Ignore macOS system files
+.DS_Store
+# Ignore logs
+*.log
+# Ignore Java compiled classes
+target/
+# Node and frontend ignores
+../frontend/node_modules/
+../frontend/dist/
+../frontend/build/
+../frontend/.DS_Store
+../frontend/npm-debug.log*
+../frontend/yarn-debug.log*
+../frontend/yarn-error.log*
+../frontend/package-lock.json
+../frontend/pnpm-lock.yaml
+../frontend/.parcel-cache/
+../frontend/.next/
+../frontend/.turbo/
+../frontend/.cache/
