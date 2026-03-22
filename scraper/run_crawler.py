@@ -124,7 +124,6 @@ def _clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
     # Add metadata
     df["price_currency"] = "INR"
-    df["scraped_date"] = datetime.now().strftime("%Y-%m-%d")
 
     # Sort by source then price
     df = df.sort_values(["source", "product_type", "price_value"]).reset_index(drop=True)
@@ -142,7 +141,7 @@ def export_to_excel(df: pd.DataFrame, output_dir: str = ".") -> str:
     export_cols = [
         "product_id", "product_name", "brand", "price_value", "price_currency",
         "product_type", "dimensions", "width_cm", "depth_cm", "height_cm",
-        "image_url", "affiliate_url", "source_url", "source", "scraped_date",
+        "image_url", "affiliate_url", "source_url", "source",
     ]
 
     # Only include columns that exist
