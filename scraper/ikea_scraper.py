@@ -23,6 +23,7 @@ from typing import Optional
 
 import requests
 from scraper.base import get_session, get_headers, clean_text, logger
+from scraper.affiliate import make_affiliate_url
 
 # ──────────────────────────────────────────────
 # IKEA search queries by product type
@@ -175,7 +176,7 @@ def _parse_ikea_product(item: dict, product_type: str) -> Optional[dict]:
             "price_currency": "INR",
             "product_type": product_type,
             "image_url": image_url,
-            "affiliate_url": product_url,
+            "affiliate_url": make_affiliate_url(product_url, source="ikea.com"),
             "source_url": product_url,
             "dimensions": dimensions,
             "color": color_str,

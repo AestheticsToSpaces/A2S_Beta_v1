@@ -92,6 +92,21 @@ DECOR_TYPES = ["clock", "curtain", "lamp", "mirror", "vase", "wall art"]
 ROLES = ["ambient lighting", "centerpiece", "dining", "floor decor", "main bed", "main seating", "storage"]
 
 # ──────────────────────────────────────────────
+# Affiliate Program Configuration
+# ──────────────────────────────────────────────
+# Amazon Associates — Sign up: https://affiliate-program.amazon.in/
+# Your tag looks like: "yourtag-21" (always ends with -21 for India)
+AMAZON_AFFILIATE_TAG = os.environ.get("AMAZON_AFFILIATE_TAG", "a2sdesign-21")
+
+# Flipkart Affiliate — Sign up: https://affiliate.flipkart.com/
+# Your affiliate ID from the Flipkart Affiliate dashboard
+FLIPKART_AFFILIATE_ID = os.environ.get("FLIPKART_AFFILIATE_ID", "a2sdesign")
+
+# IKEA — No direct affiliate program in India.
+# Uses redirect tracking. Set a custom tracking param or leave empty.
+IKEA_TRACKING_PARAM = os.environ.get("IKEA_TRACKING_PARAM", "utm_source=a2s&utm_medium=affiliate")
+
+# ──────────────────────────────────────────────
 # Streamlit UI Settings
 # ──────────────────────────────────────────────
 APP_TITLE = "A2S – AI Interior Design Assistant"

@@ -17,6 +17,7 @@ from typing import Optional
 from bs4 import BeautifulSoup
 
 from scraper.base import get_session, get_headers, fetch_page, clean_price, clean_text, logger
+from scraper.affiliate import make_affiliate_url
 
 # ──────────────────────────────────────────────
 # Amazon India search URLs
@@ -133,7 +134,7 @@ def _parse_amazon_results(html: str, product_type: str) -> list[dict]:
                 "price_currency": "INR",
                 "product_type": product_type,
                 "image_url": image_url,
-                "affiliate_url": product_url,
+                "affiliate_url": make_affiliate_url(product_url, source="amazon.in", asin=asin),
                 "source_url": product_url,
                 "dimensions": dimensions,
                 "rating": rating,

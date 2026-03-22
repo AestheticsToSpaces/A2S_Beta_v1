@@ -25,6 +25,7 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from scraper.base import logger
+from scraper.affiliate import convert_existing_urls
 
 
 def run_scraper(sites: list[str], max_per_category: int = 30) -> pd.DataFrame:
@@ -61,6 +62,9 @@ def run_scraper(sites: list[str], max_per_category: int = 30) -> pd.DataFrame:
     if not all_products:
         logger.warning("No products scraped from any site!")
         return pd.DataFrame()
+
+    # ── Ensure affiliate links (safety net for any that slipped through) ──
+    all_products = convert_existing_urls(all_products)
 
     # ── Build DataFrame ──
     df = pd.DataFrame(all_products)
@@ -179,6 +183,11 @@ def print_summary(df: pd.DataFrame) -> None:
 
     has_images = df["image_url"].fillna("").str.startswith("http").sum()
     print(f"  With images: {has_images}/{len(df)}")
+
+    if "affiliate_url" in df.columns:
+        has_aff = df["affiliate_url"].fillna("").str.len().gt(0).sum()
+        has_tag = df["affiliate_url"].fillna("").str.contains("tag=|affid=|utm_source=", regex=True).sum()
+        print(f"  With affiliate links: {has_tag}/{len(df)}")
     print("=" * 60 + "\n")
 
 

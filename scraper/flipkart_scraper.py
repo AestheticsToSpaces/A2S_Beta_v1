@@ -18,6 +18,7 @@ from typing import Optional
 from bs4 import BeautifulSoup
 
 from scraper.base import get_session, get_headers, fetch_page, clean_price, clean_text, logger
+from scraper.affiliate import make_affiliate_url
 
 # ──────────────────────────────────────────────
 # Flipkart search URLs
@@ -211,6 +212,7 @@ def _extract_from_product_links(soup: BeautifulSoup, product_type: str) -> list[
                 parts = [g for g in dim_match.groups() if g]
                 dimensions = " x ".join(parts) + " cm"
 
+            raw_product_url = url.split("&")[0]
             products.append({
                 "product_id": pid,
                 "product_name": name,
@@ -219,8 +221,8 @@ def _extract_from_product_links(soup: BeautifulSoup, product_type: str) -> list[
                 "price_currency": "INR",
                 "product_type": product_type,
                 "image_url": image_url,
-                "affiliate_url": url.split("&")[0],
-                "source_url": url.split("&")[0],
+                "affiliate_url": make_affiliate_url(raw_product_url, source="flipkart.com"),
+                "source_url": raw_product_url,
                 "dimensions": dimensions,
                 "rating": rating,
                 "source": "flipkart.com",
@@ -255,12 +257,13 @@ def _parse_flipkart_results(html: str, product_type: str) -> list[dict]:
     if json_ld_products:
         # These won't have prices, but at least we get names and URLs
         for p in json_ld_products:
+            raw_url = p.get("url", "")
             p.setdefault("brand", "Unknown")
             p.setdefault("price_value", None)
             p.setdefault("price_currency", "INR")
             p.setdefault("image_url", "")
-            p.setdefault("affiliate_url", p.get("url", ""))
-            p.setdefault("source_url", p.get("url", ""))
+            p["source_url"] = raw_url
+            p["affiliate_url"] = make_affiliate_url(raw_url, source="flipkart.com")
             p.setdefault("dimensions", "")
             p.setdefault("source", "flipkart.com")
         return [p for p in json_ld_products if p.get("price_value")]
